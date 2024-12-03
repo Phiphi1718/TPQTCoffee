@@ -1,0 +1,102 @@
+/* Đặt style cơ bản cho toàn trang */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Màu nền nhạt */
+    color: #333;
+  }
+  
+  /* Container chính của trang */
+  .all-products-page1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .all-products-page1 h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4CAF50; /* Màu xanh nổi bật */
+  }
+  
+  /* Danh mục sản phẩm */
+  .product-category1 {
+    margin-bottom: 40px;
+  }
+  
+  .product-category1 h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #444;
+    border-bottom: 2px solid #4CAF50;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  /* Danh sách sản phẩm */
+  .product-list1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive */
+    gap: 20px;
+  }
+  
+  /* Item sản phẩm */
+  .product-item1 {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .product-item1:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi khi hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .product-item1 img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .product-item1 h3 {
+    font-size: 1.2rem;
+    margin: 10px 15px;
+    color: #333;
+  }
+  
+  .product-item1 p {
+    font-size: 1rem;
+    margin: 0 15px 15px;
+    color: #888;
+  }
+  
+  /* Link sản phẩm */
+  .product-item1 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.3s;
+  }
+  
+  .product-item1 a:hover h3 {
+    color: #4CAF50;
+  }
+  
+  /* Responsive nhỏ hơn */
+  @media (max-width: 768px) {
+    .product-list1 {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Hàng dọc trên màn hình nhỏ */
+    }
+  
+    .product-item1 img {
+      height: 120px;
+    }
+  }
+  

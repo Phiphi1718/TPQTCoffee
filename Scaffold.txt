@@ -1,0 +1,8 @@
+Scaffold-DbContext "Data Source=PHIPHI\PHIPHI;Initial Catalog=CoffeeHouseDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data -Force 
+
+
+
+thư viện 
+axios 
+bootstrap 
+react-router-dom
