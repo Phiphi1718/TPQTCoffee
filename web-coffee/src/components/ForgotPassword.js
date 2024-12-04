@@ -18,7 +18,7 @@ function ForgotPassword() {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`https://localhost:7030/api/Auth/ForgotPassword?email=${email}`);
+      const response = await axios.post(`https://localhost:7095/api/Auth/ForgotPassword?email=${email}`);
       setMessage('Mật khẩu mới đã được gửi đến email của bạn!');
       console.log(response.data);
     } catch (error) {

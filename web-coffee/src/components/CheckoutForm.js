@@ -75,7 +75,7 @@ const CheckoutForm = () => {
     };
 
     try {
-      const response = await fetch('https://localhost:7030/api/DonHang', {
+      const response = await fetch('https://localhost:7095/api/DonHang', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

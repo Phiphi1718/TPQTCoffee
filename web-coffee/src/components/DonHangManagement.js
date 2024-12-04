@@ -9,7 +9,7 @@ const DonHangManagement = () => {
 
   // Gọi API để lấy tất cả đơn hàng khi load trang
   useEffect(() => {
-    fetch('https://localhost:7030/api/DonHang/GetAll')
+    fetch('https://localhost:7095/api/DonHang/GetAll')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -26,7 +26,7 @@ const DonHangManagement = () => {
     setError('');
     setSearchedDonHang(null);
 
-    fetch(`https://localhost:7030/api/DonHang/${searchTerm}`)
+    fetch(`https://localhost:7095/api/DonHang/${searchTerm}`)
       .then((response) => {
         if (response.ok) {
           return response.json();

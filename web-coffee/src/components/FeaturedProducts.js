@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
-    fetch('https://localhost:7030/api/Product/getall')
+    fetch('https://localhost:7095/api/Product/getall')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -67,7 +67,7 @@ const FeaturedProducts = () => {
 };
 
 const ProductCard = ({ product, onBuyClick }) => {
-  const imageUrl = `https://localhost:7030/${product.imageUrl}`;
+  const imageUrl = `https://localhost:7095/${product.imageUrl}`;
 
   return (
     <div className="product-card">

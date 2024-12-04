@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   // Hàm gọi API để lấy số lượng đơn ứng tuyển
   const fetchApplications = () => {
-    axios.get('https://localhost:7030/api/JobApplication/Getall')
+    axios.get('https://localhost:7095/api/JobApplication/Getall')
       .then(response => {
         setTotalApplications(response.data.$values.length); // Số đơn ứng tuyển
       })
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   // Hàm gọi API để lấy thông tin hóa đơn và tính tổng doanh thu theo tháng
   const fetchInvoices = () => {
-    axios.get('https://localhost:7030/api/DonHang/GetAll')
+    axios.get('https://localhost:7095/api/DonHang/GetAll')
       .then(response => {
         const invoiceData = response.data.$values;
         setInvoices(invoiceData); // Lưu danh sách hóa đơn

@@ -13,7 +13,7 @@ const CakePage = () => {
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
-    fetch('https://localhost:7030/api/Product/getall')
+    fetch('https://localhost:7095/api/Product/getall')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -93,7 +93,7 @@ const CakePage = () => {
 
 // Component hiển thị từng sản phẩm trong danh mục "Bánh"
 const CakeProductCard = ({ product, onBuy }) => {
-  const imageUrl = `https://localhost:7030/${product.imageUrl}`;
+  const imageUrl = `https://localhost:7095/${product.imageUrl}`;
 
   return (
     <div className="cake-product-card">
@@ -149,7 +149,7 @@ const ProductModalCake = ({ product, onClose, onAddToCart }) => {
         <div className="product-infocake">
           <div className="modal-imagecake">
             <img
-              src={`https://localhost:7030/${product.imageUrl}`}
+              src={`https://localhost:7095/${product.imageUrl}`}
               alt={product.name}
             />
           </div>

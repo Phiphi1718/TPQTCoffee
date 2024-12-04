@@ -15,7 +15,7 @@ const JobApplication = () => {
   // Hàm lấy tất cả đơn ứng tuyển
   const getAllJobApplications = async () => {
     try {
-      const response = await axios.get("https://localhost:7030/api/JobApplication/Getall");
+      const response = await axios.get("https://localhost:7095/api/JobApplication/Getall");
       console.log(response.data); // Log dữ liệu để kiểm tra
       setJobApplications(response.data.$values); // Lấy dữ liệu từ $values
       setJobApplication(null); // Clear dữ liệu tìm kiếm khi lấy tất cả đơn ứng tuyển
@@ -33,7 +33,7 @@ const JobApplication = () => {
       setJobApplications([]); // Xóa dữ liệu "Lấy tất cả" khi tìm kiếm theo tên
 
       const response = await axios.get(
-        `https://localhost:7030/api/JobApplication/ByName/${name}`
+        `https://localhost:7095/api/JobApplication/ByName/${name}`
       );
 
       setJobApplication(response.data); // Cập nhật dữ liệu tìm được từ API
@@ -109,7 +109,7 @@ const JobApplication = () => {
               <strong>Ảnh:</strong>
               <br />
               <img
-                src={`https://localhost:7030/${jobApplication.image}`}
+                src={`https://localhost:7095/${jobApplication.image}`}
                 alt="Ảnh ứng viên"
                 className="job-search-applicant-image"
               />
@@ -135,7 +135,7 @@ const JobApplication = () => {
             <div className="application-info-container">
             <div className="application-info-img-container">
     {application.image ? (
-      <img src={`https://localhost:7030/${application.image}`} alt="Ảnh ứng viên" />
+      <img src={`https://localhost:7095/${application.image}`} alt="Ảnh ứng viên" />
     ) : (
       <span>Không có ảnh</span>
     )}

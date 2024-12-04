@@ -43,7 +43,7 @@ const ProductManager  = () => {
     addImages.forEach((image) => formData.append("Images", image));
 
     try {
-      await axios.post("https://localhost:7030/api/Product/addProduct", formData, {
+      await axios.post("https://localhost:7095/api/Product/addProduct", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setError("Sản phẩm đã được thêm thành công");
@@ -62,7 +62,7 @@ const ProductManager  = () => {
   
     try {
       const response = await axios.get(
-        `https://localhost:7030/api/Product/find/${searchProductName}`
+        `https://localhost:7095/api/Product/find/${searchProductName}`
       );
       setEditProduct(response.data);
       setOldProductName(searchProductName);
@@ -85,7 +85,7 @@ const ProductManager  = () => {
     editImages.forEach((image) => formData.append("Images", image));
 
     try {
-      await axios.put(`https://localhost:7030/api/Product/edit products/${oldProductName}`, formData, {
+      await axios.put(`https://localhost:7095/api/Product/edit products/${oldProductName}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setError("Sản phẩm đã được chỉnh sửa thành công");
@@ -103,7 +103,7 @@ const ProductManager  = () => {
     }
 
     try {
-      await axios.delete(`https://localhost:7030/api/Product/delete/${deleteProductName}`);
+      await axios.delete(`https://localhost:7095/api/Product/delete/${deleteProductName}`);
       setError("Sản phẩm đã được xóa thành công");
       setDeleteProductName("");
     } catch {
@@ -121,7 +121,7 @@ const ProductManager  = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://localhost:7030/api/Product/getall");
+      const response = await axios.get("https://localhost:7095/api/Product/getall");
       setProducts(response.data.$values);
       setError("");
     } catch (err) {
@@ -219,7 +219,7 @@ const ProductManager  = () => {
             <div className="pm-image-container">
               {editProduct.imageUrls?.$values && editProduct.imageUrls.$values.length > 0 ? (
                 <img
-                  src={`https://localhost:7030/${editProduct.imageUrls.$values[0]}`}
+                  src={`https://localhost:7095/${editProduct.imageUrls.$values[0]}`}
                   alt={editProduct.name}
                   className="pm-product-image"
                 />
@@ -335,7 +335,7 @@ const ProductManager  = () => {
                   <div className="pm-image-container">
             {product.imageUrl ? (
               <img
-                src={`https://localhost:7030/${product.imageUrl}`}
+                src={`https://localhost:7095/${product.imageUrl}`}
                 alt={product.name}
                 className="pm-product-image"
               />

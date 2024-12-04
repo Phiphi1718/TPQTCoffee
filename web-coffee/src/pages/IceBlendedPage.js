@@ -12,7 +12,7 @@ const IceBlendedPage = () => {
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
-    fetch('https://localhost:7030/api/Product/getall')
+    fetch('https://localhost:7095/api/Product/getall')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -66,7 +66,7 @@ const IceBlendedPage = () => {
 
 const IceBlendedProductCard = ({ product, onBuy }) => {
   // Xử lý đường dẫn hình ảnh
-  const imageUrl = `https://localhost:7030/${product.imageUrl}`;
+  const imageUrl = `https://localhost:7095/${product.imageUrl}`;
 
   return (
     <div className="ice-blended-product-card">

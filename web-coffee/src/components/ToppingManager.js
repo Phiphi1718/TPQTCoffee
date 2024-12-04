@@ -115,7 +115,7 @@ const ToppingManager = () => {
 
   const fetchToppings = async () => {
     try {
-      const response = await axios.get("https://localhost:7030/api/Toping/Getall");
+      const response = await axios.get("https://localhost:7095/api/Toping/Getall");
       setToppings(response.data.$values);
       setError("");
     } catch (err) {
@@ -196,7 +196,7 @@ const ToppingManager = () => {
     <div className="pm-image-container">
       {editTopping.img ? (
         <img
-          src={`https://localhost:7030/${editTopping.img}`}
+          src={`https://localhost:7095/${editTopping.img}`}
           alt={editTopping.name}
           className="pm-product-image"
         />
@@ -297,7 +297,7 @@ const ToppingManager = () => {
                 <div className="pm-image-container">
                 {topping.img && (
                   <img
-                    src={`https://localhost:7030/${topping.img}`}
+                    src={`https://localhost:7095/${topping.img}`}
                     alt={topping.name}
                     className="pm-product-image"
                   />

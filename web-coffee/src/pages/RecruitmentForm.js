@@ -54,7 +54,7 @@ const RecruitmentForm = () => {
 
     try {
       // Gửi yêu cầu POST lên API
-      const response = await axios.post('https://localhost:7030/api/JobApplication/AddJobApplication', formData, {
+      const response = await axios.post('https://localhost:7095/api/JobApplication/AddJobApplication', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',  // Đảm bảo header phù hợp với FormData
         },

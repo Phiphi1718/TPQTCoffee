@@ -16,7 +16,7 @@ const MenuProduct = () => {
 
   // Hàm gọi API để lấy sản phẩm
   const fetchProducts = () => {
-    fetch('https://localhost:7030/api/Product/getall')
+    fetch('https://localhost:7095/api/Product/getall')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -93,7 +93,7 @@ const MenuProduct = () => {
           {products.coffee.map((product) => (
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7030/${product.imageUrl}`} alt={product.name} />
+                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
               </Link>
@@ -109,7 +109,7 @@ const MenuProduct = () => {
           {products.tea.map((product) => (
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7030/${product.imageUrl}`} alt={product.name} />
+                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
               </Link>
@@ -125,7 +125,7 @@ const MenuProduct = () => {
           {products.milkTea.map((product) => (
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7030/${product.imageUrl}`} alt={product.name} />
+                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
               </Link>
@@ -141,7 +141,7 @@ const MenuProduct = () => {
           {products.cake.map((product) => (
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7030/${product.imageUrl}`} alt={product.name} />
+                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
               </Link>
@@ -157,7 +157,7 @@ const MenuProduct = () => {
           {products.iceBlended.map((product) => (
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7030/${product.imageUrl}`} alt={product.name} />
+                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
               </Link>

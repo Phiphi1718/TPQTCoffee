@@ -45,7 +45,7 @@ function Profile() {
 
     try {
       const response = await axios.put(
-        'https://localhost:7030/api/Auth/update',
+        'https://localhost:7095/api/Auth/update',
         updateData,
         {
           headers: {

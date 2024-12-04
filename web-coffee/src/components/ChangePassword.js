@@ -27,7 +27,7 @@ function ChangePassword() {
     };
 
     try {
-      const response = await axios.put(`https://localhost:7030/api/Auth/ChangePass?gmails=${encodeURIComponent(gmails)}`, changPassData);
+      const response = await axios.put(`https://localhost:7095/api/Auth/ChangePass?gmails=${encodeURIComponent(gmails)}`, changPassData);
       setMessage('Đã thay đổi mật khẩu thành công!');
       console.log(response.data);
     } catch (error) {

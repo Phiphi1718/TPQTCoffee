@@ -18,7 +18,7 @@ const ProductModal = ({ product, onClose }) => {
 
   // Fetch toppings from API
   useEffect(() => {
-    fetch('https://localhost:7030/api/Toping/Getall')
+    fetch('https://localhost:7095/api/Toping/Getall')
       .then((response) => response.json())
       .then((data) => {
         if (data?.$values) {
@@ -111,7 +111,7 @@ const ProductModal = ({ product, onClose }) => {
         <div className="product-info">
           <div className="modal-image">
             <img
-              src={`https://localhost:7030/${product.imageUrl}`}
+              src={`https://localhost:7095/${product.imageUrl}`}
               alt={product.name}
             />
           </div>

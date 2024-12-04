@@ -34,7 +34,7 @@ function Login() {
     const loginData = { email, password };
 
     try {
-      const response = await axios.post('https://localhost:7030/api/Auth/login', loginData);
+      const response = await axios.post('https://localhost:7095/api/Auth/login', loginData);
       setMessage('Đăng nhập thành công!');
       
       // Lưu token, trạng thái đăng nhập, và thông tin người dùng vào localStorage
