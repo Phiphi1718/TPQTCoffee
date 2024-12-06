@@ -114,6 +114,13 @@
   margin-right: 5px;
 }
 
+/* Search bar dưới banner */
+.search-home {
+  display: none; /* Mặc định ẩn khung tìm kiếm */
+  margin: 10px auto;
+  text-align: center;
+}
+
 /* ----------------- Responsive Adjustments ----------------- */
 /* Màn hình nhỏ hơn 768px */
 @media (max-width: 768px) {
@@ -143,12 +150,15 @@
     padding: 6px 10px;
     width: 90%;
   }
+  .search-home {
+    display: block; /* Hiển thị khung tìm kiếm khi màn hình nhỏ */
+  }
 }
 
 /* Màn hình nhỏ hơn 480px */
 @media (max-width: 480px) {
   .product-grid {
-    grid-template-columns: repeat(3, 1fr); /* Vẫn giữ 3 sản phẩm trên một hàng */
+    grid-template-columns: repeat(2, 1fr); /* Vẫn giữ 3 sản phẩm trên một hàng */
     gap: 10px; /* Giảm thêm khoảng cách nếu cần */
   }
 
@@ -173,5 +183,9 @@
     font-size: 10px;
     padding: 5px 8px;
     width: 90%; /* Chiều rộng nút nhỏ hơn */
+  }
+
+  .search-home {
+    display: block; /* Hiển thị khung tìm kiếm khi màn hình nhỏ */
   }
 }

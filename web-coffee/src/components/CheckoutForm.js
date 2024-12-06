@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../CartContext'; // Giỏ hàng
 import { useNavigate } from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa'; // Import icon thùng rác
@@ -10,10 +10,8 @@ const CheckoutForm = () => {
 
   const [paymentMethod, setPaymentMethod] = useState('');
   const [orderCode, setOrderCode] = useState('');
-  const [countdown, setCountdown] = useState(5);
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
   const [isTermsAccepted, setIsTermsAccepted] = useState(false); // State lưu trữ trạng thái checkbox
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // State for showing success message
 
   const handleToppingDetails = (selectedToppings) => {
     if (!selectedToppings || selectedToppings.length === 0) return 'Không có topping';
@@ -42,9 +40,11 @@ const CheckoutForm = () => {
     setOrderCode(generatedOrderCode);
 
     try {
+      // Lưu giỏ hàng vào localStorage
+      localStorage.setItem('order', JSON.stringify(cart));
+
       await saveOrder(generatedOrderCode);
       setIsOrderConfirmed(true); // Hiển thị mã đơn hàng và đếm ngược sau khi gửi thành công
-      setShowSuccessMessage(true); // Hiển thị thông báo thành công
     } catch (error) {
       console.error('Lỗi khi thêm đơn hàng:', error);
     }
@@ -86,6 +86,7 @@ const CheckoutForm = () => {
       if (response.ok) {
         console.log('Đơn hàng đã được lưu thành công!');
         clearCart();
+        navigate('/review'); // Chuyển hướng tới ReviewForm sau khi thanh toán thành công
       } else {
         const errorResponse = await response.json();
         console.error('Lỗi khi lưu đơn hàng:', errorResponse);
@@ -112,33 +113,6 @@ const CheckoutForm = () => {
       updateQuantity(index, cart[index].quantity - 1); // Giảm số lượng sản phẩm (không nhỏ hơn 1)
     }
   };
-
-  useEffect(() => {
-    if (!isOrderConfirmed || countdown === 0) return;
-
-    const interval = setInterval(() => {
-      setCountdown((prev) => {
-        const newCountdown = prev - 1;
-        if (newCountdown === 0) {
-          clearCart(); // Xóa giỏ hàng khi chuyển về trang chủ
-          navigate('/');
-        }
-        return newCountdown;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [isOrderConfirmed, countdown, navigate, clearCart]);
-
-  if (isOrderConfirmed) {
-    return (
-      <div className="checkout-form__thank-you-message">
-        <h2>Đơn hàng của bạn đã thanh toán thành công!</h2>
-        <p>Hãy chú ý điện thoại khi shipper gọi đến nhé!</p>
-        <p>Bạn sẽ được chuyển về trang chủ sau {countdown} giây.</p>
-      </div>
-    );
-  }
 
   if (cart.length === 0) {
     return (
@@ -185,7 +159,7 @@ const CheckoutForm = () => {
       </div>
 
       <div className="checkout-form__payment-summary">
-        <div className="total-price">Tổng tiền (Đã có VAT):</div>
+        <div className="total-price1">Tổng tiền (Đã có VAT):</div>
         <div>{calculateTotalPrice()} VND</div>
       </div>
 
@@ -223,12 +197,6 @@ const CheckoutForm = () => {
       >
         Thanh toán
       </button>
-
-      {showSuccessMessage && (
-        <div className="checkout-form__success-message">
-          Đơn hàng của bạn đã được thanh toán thành công!
-        </div>
-      )}
     </div>
   );
 };

@@ -26,7 +26,7 @@ body {
   .product-category1 {
     margin-bottom: 40px;
   }
-  
+
   .product-category1 h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
@@ -53,6 +53,13 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
   }
   
+  .product-item1 .noidung{
+    height: 85px;
+    max-height: 100%;
+    position: relative;
+    padding-bottom: 30px; /* Khoảng cách cho giá không bị đè lên */
+  }
+  
   .product-item1:hover {
     transform: translateY(-5px); /* Hiệu ứng nổi khi hover */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
@@ -65,16 +72,19 @@ body {
     border-bottom: 1px solid #ddd;
   }
   
-  .product-item1 h3 {
+  .noidung h3 {
     font-size: 1.2rem;
     margin: 10px 15px;
     color: #333;
+    text-align: center;
   }
   
-  .product-item1 p {
-    font-size: 1rem;
-    margin: 0 15px 15px;
-    color: #888;
+  .noidung p {
+    position: absolute;
+    bottom: 0; /* Đẩy giá xuống chân khung */
+    width: 100%; /* Đảm bảo giá chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa giá */
+    margin: 0; /* Loại bỏ margin để không có khoảng cách */
   }
   
   /* Link sản phẩm */

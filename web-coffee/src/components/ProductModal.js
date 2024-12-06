@@ -101,38 +101,38 @@ const ProductModal = ({ product, onClose }) => {
     
 
   return (
-    <div className="modal-overlay">
-      <div className="modalcontent">
-        <button className="close-button" onClick={onClose}>
+    <div className="modal-overlay10">
+      <div className="modalcontent2">
+        <button className="close-button1" onClick={onClose}>
           &times;
         </button>
 
         {/* Khung 1: Hình ảnh sản phẩm */}
-        <div className="product-info">
+        <div className="product-info2">
           <div className="modal-image">
             <img
               src={`https://localhost:7095/${product.imageUrl}`}
               alt={product.name}
             />
           </div>
-          <div className="product-details">
+          <div className="product-details2">
             <h3 className="nameh3">{product.name}</h3>
             <p className="pricep">{product.price.toLocaleString()} đ</p>
 
             {/* Bộ chọn số lượng */}
-            <div className="quantity-selector">
+            <div className="quantity-selector2">
               <h4 className="Soluong">Số lượng:</h4>
-              <div className="quantity-controls">
+              <div className="quantity-controls2">
                 <button
-                  className="quantity-button"
+                  className="quantity23"
                   onClick={() => handleQuantityChange('decrement')}
                   disabled={quantity <= 1}
                 >
                   -
                 </button>
-                <span className="quantity-display">{quantity}</span>
+                <span className="quantity-display2">{quantity}</span>
                 <button
-                  className="quantity-button"
+                  className="quantity23"
                   onClick={() => handleQuantityChange('increment')}
                 >
                   +

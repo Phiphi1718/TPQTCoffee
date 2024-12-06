@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './MenuProduct.css';
-
+import ProductModal from './ProductModal'; 
+import CartButton from './CartButton';  
+import FloatingButton from './FloatingButton';  
 
 const MenuProduct = () => {
   const [products, setProducts] = useState({
@@ -13,6 +15,7 @@ const MenuProduct = () => {
   });
   const [loading, setLoading] = useState(true); // Trạng thái loading
   const [error, setError] = useState(null); // Lỗi nếu có
+  const [selectedProduct, setSelectedProduct] = useState(null); // Lưu sản phẩm được chọn để hiển thị modal
 
   // Hàm gọi API để lấy sản phẩm
   const fetchProducts = () => {
@@ -94,9 +97,17 @@ const MenuProduct = () => {
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
                 <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                <div className="noidung">
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
+                </div> 
               </Link>
+              <button
+                className="btn-buy"
+                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
+              >
+                Đặt mua
+              </button>
             </div>
           ))}
         </div>
@@ -110,9 +121,17 @@ const MenuProduct = () => {
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
                 <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                <div className="noidung">
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
+                </div> 
               </Link>
+              <button
+                className="btn-buy"
+                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
+              >
+                Đặt mua
+              </button>
             </div>
           ))}
         </div>
@@ -126,9 +145,17 @@ const MenuProduct = () => {
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
                 <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                <div className="noidung">
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
+                </div> 
               </Link>
+              <button
+                className="btn-buy"
+                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
+              >
+                Đặt mua
+              </button>
             </div>
           ))}
         </div>
@@ -142,9 +169,17 @@ const MenuProduct = () => {
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
                 <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                <div className="noidung">
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
+                </div> 
               </Link>
+              <button
+                className="btn-buy"
+                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
+              >
+                Đặt mua
+              </button>
             </div>
           ))}
         </div>
@@ -158,13 +193,31 @@ const MenuProduct = () => {
             <div key={product.id} className="product-item1">
               <Link to={`/product/${product.id}`}>
                 <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                <div className="noidung">
                 <h3>{product.name}</h3>
                 <p>{product.price.toLocaleString()} đ</p>
+                </div> 
               </Link>
+              <button
+                className="btn-buy"
+                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
+              >
+                Đặt mua
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Hiển thị Modal */}
+      {selectedProduct && (
+        <ProductModal
+          product={selectedProduct} // Truyền thông tin sản phẩm vào modal
+          onClose={() => setSelectedProduct(null)} // Đóng modal
+        />
+      )}
+            <CartButton />   {/* Nút CartButton */}
+      <FloatingButton /> {/* Nút FloatingButton */}
     </div>
   );
 };

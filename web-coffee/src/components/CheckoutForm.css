@@ -82,7 +82,7 @@
     font-weight: normal; /* Không in đậm cho tổng tiền và phí vận chuyển */
   }
   
-  .checkout-form__payment-summary .total-price {
+  .checkout-form__payment-summary .total-price1 {
     margin-left: 10px;  /* Khoảng cách bên trái */
   }
   

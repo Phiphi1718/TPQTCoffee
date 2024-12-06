@@ -28,6 +28,10 @@ import CakePage from './pages/CakePage';
 import MilkTeaPage from './pages/MilkTeaPage';
 import IceBlendedPage from './pages/IceBlendedPage';
 import DonHangManagement from './components/DonHangManagement';
+import SearchBar from './components/SearchBar';
+import ProductDetail from './components/ProductDetail';
+import ReviewForm from './components/ReviewForm';
+import ChuyenNha from './pages/ChuyenNha';
 
 
 function App() {
@@ -47,6 +51,7 @@ function App() {
           <Route path="/jobApplication" element={<JobApplication />} />
           <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/DonHangManagement" element={<DonHangManagement />} />
+          <Route path="/SearchBar" element={<SearchBar />} />
 
           {/* Các route cần Header và Footer */}
           <Route element={<Layout />}>
@@ -66,6 +71,9 @@ function App() {
             <Route path="/CakePage" element={<CakePage />} />
             <Route path="/MilkTeaPage" element={<MilkTeaPage />} />
             <Route path="/IceBlendedPage" element={<IceBlendedPage />} />
+            <Route path="/ProductDetail" element={<ProductDetail />} />
+            <Route path="/review" element={<ReviewForm />} />
+            <Route path="/ChuyenNha" element={<ChuyenNha />} />
           </Route>
         </Routes>
       </Router>

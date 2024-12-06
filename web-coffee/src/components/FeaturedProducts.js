@@ -3,6 +3,7 @@ import './FeaturedProducts.css';
 import ProductModal from './ProductModal'; // Import modal component
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import SearchBar from './SearchBar';
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -39,7 +40,11 @@ const FeaturedProducts = () => {
   };
 
   return (
+    
     <div className="TraNoiBat">
+       <div className="search-home">
+        <SearchBar />
+      </div>
       <div className="section-Tra">TRÀ NỔI BẬT</div>
       <div className="section-subtitle">
         Trải qua hơn 50 năm chắt chiu tinh hoa từ những búp trà xanh và hạt cà phê thượng hạng cùng mong muốn mang lại cho khách hàng những trải nghiệm giá trị nhất khi thưởng thức.

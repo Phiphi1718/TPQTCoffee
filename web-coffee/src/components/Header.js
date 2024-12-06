@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './HomePage.css'
+import './Header.css';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,9 +34,9 @@ const Header = () => {
 
         {/* Logo */}
         <div className="logoTPQT">
-        <Link to="/">
+          <Link to="/">
             <img src="Team.jpg" alt="TPQT Coffee Logo" style={{ width: 'auto', height: '50px' }} />
-          </Link> 
+          </Link>
         </div>
 
         {/* Mục menu khi màn hình lớn */}
@@ -44,9 +45,9 @@ const Header = () => {
             <Link to="/">Trang Chủ</Link>
             <Link to="/coffee">Cà phê</Link>
             <Link to="/TeaPage">Trà</Link>
-           {/* Menu con */}
-           <div className="menu-item">
-           <Link to="/MenuProduct" className="menu-link">Menu</Link>
+            {/* Menu con */}
+            <div className="menu-item">
+              <Link to="/MenuProduct" className="menu-link">Menu</Link>
               <div className="submenu">
                 <Link to="/coffee">Cà phê</Link>
                 <Link to="/TeaPage">Trà</Link>
@@ -55,11 +56,16 @@ const Header = () => {
                 <Link to="/IceBlendedPage">Ice Blended</Link>
               </div>
             </div>
-            <Link to="/story">Chuyện Nhà</Link>
+            <Link to="/ChuyenNha">Chuyện Nhà</Link>
             <Link to="/StorePage">Cửa hàng</Link>
             <Link to="/RecruitmentForm">Tuyển dụng</Link>
+            <div className="search-header">
+          <SearchBar />
+        </div>
           </nav>
         </div>
+
+        
 
         {/* Icon user (nếu đã đăng nhập) */}
         <div className="auth">
@@ -94,26 +100,25 @@ const Header = () => {
       </div>
 
       {/* Menu (hiện ra khi màn hình nhỏ) */}
-<div className={`mobile-menu ${isMenuOpen ? 'show' : ''}`}>
-  <nav className="mobile-nav">
-    <Link to="/" onClick={() => setIsMenuOpen(false)}>Trang Chủ</Link>
-    <Link to="/coffee" onClick={() => setIsMenuOpen(false)}>Cà phê</Link>
-    <Link to="/TeaPage" onClick={() => setIsMenuOpen(false)}>Trà</Link>
-    <Link to="/MenuProduct" onClick={() => setIsMenuOpen(false)}>Menu</Link>
-    <Link to="/story" onClick={() => setIsMenuOpen(false)}>Chuyện Nhà</Link>
-    <Link to="/StorePage" onClick={() => setIsMenuOpen(false)}>Cửa hàng</Link>
-    <Link to="/RecruitmentForm" onClick={() => setIsMenuOpen(false)}>Tuyển dụng</Link>
+      <div className={`mobile-menu ${isMenuOpen ? 'show' : ''}`}>
+        <nav className="mobile-nav">
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>Trang Chủ</Link>
+          <Link to="/coffee" onClick={() => setIsMenuOpen(false)}>Cà phê</Link>
+          <Link to="/TeaPage" onClick={() => setIsMenuOpen(false)}>Trà</Link>
+          <Link to="/MenuProduct" onClick={() => setIsMenuOpen(false)}>Menu</Link>
+          <Link to="/ChuyenNha" onClick={() => setIsMenuOpen(false)}>Chuyện Nhà</Link>
+          <Link to="/StorePage" onClick={() => setIsMenuOpen(false)}>Cửa hàng</Link>
+          <Link to="/RecruitmentForm" onClick={() => setIsMenuOpen(false)}>Tuyển dụng</Link>
 
-    {/* Nếu chưa đăng nhập thì có 2 ô Login và Register */}
-    {!isLoggedIn && (
-      <>
-        <Link to="/login" onClick={() => setIsMenuOpen(false)}>Đăng Nhập</Link>
-        <Link to="/register" onClick={() => setIsMenuOpen(false)}>Đăng Ký</Link>
-      </>
-    )}
-  </nav>
-</div>
-
+          {/* Nếu chưa đăng nhập thì có 2 ô Login và Register */}
+          {!isLoggedIn && (
+            <>
+              <Link to="/login" onClick={() => setIsMenuOpen(false)}>Đăng Nhập</Link>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)}>Đăng Ký</Link>
+            </>
+          )}
+        </nav>
+      </div>
     </header>
   );
 };

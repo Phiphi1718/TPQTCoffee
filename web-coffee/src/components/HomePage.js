@@ -12,6 +12,7 @@ import IceBlended from './IceBlended';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewsPromotion from './NewsPromotion';
 
+
 // Import các component CartButton và FloatingButton
 import CartButton from '../components/CartButton'; // Đảm bảo đúng đường dẫn
 import FloatingButton from '../components/FloatingButton'; // Đảm bảo đúng đường dẫn
@@ -25,6 +26,7 @@ function HomePage() {
       <NewsPromotion />
       <FloatingButton /> {/* Nút Hotline */}
       <CartButton /> {/* Nút Giỏ hàng */}
+      
     </div>
   );
 }
