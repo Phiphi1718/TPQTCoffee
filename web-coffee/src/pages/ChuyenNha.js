@@ -4,19 +4,19 @@ function ChuyenNha() {
   return (
     <div>
       {/* Phần "Chuyện Nhà" */}
-      <div className="story-container">
-        <h2 className="story-title">Chuyện Nhà</h2>
-        <div className="story-underline"></div>
-        <p className="story-text">
+      <div className="chuyen-nha-container">
+        <h2 className="chuyen-nha-title">Chuyện Nhà</h2>
+        <div className="chuyen-nha-underline"></div>
+        <p className="chuyen-nha-text">
           The Coffee House sẽ là nơi mọi người xích lại gần nhau, đề cao giá trị kết nối con người và sẻ chia thân tình bên những tách cà phê, ly trà đượm hương, truyền cảm hứng về lối sống hiện đại.
         </p>
       </div>
 
-      <div className="container">
+      <div className="news-container">
         {/* Card đầu tiên */}
-        <div className="card">
+        <div className="news-card">
           <img src="https://file.hstatic.net/1000075078/article/thecoffeehouse_traxanhtaybac_1_d8c2ac635c5941a19c0065339727e41a_master.jpg" alt="Tây Bắc" />
-          <div className="content">
+          <div className="news-content">
             <h1>NGƯỢC LÊN TÂY BẮC GÓI VỊ MỘC VỀ XUÔI</h1>
             <p>16/08/2023</p>
             <p>
@@ -28,9 +28,9 @@ function ChuyenNha() {
         </div>
 
         {/* Card thứ hai */}
-        <div className="card">
+        <div className="news-card">
           <img src="https://file.hstatic.net/1000075078/article/signaturebythecoffeehouse_03_16b2ab7101e14d62835a4b231e73b65d_master.jpg" alt="Coffee House" />
-          <div className="content">
+          <div className="news-content">
             <h1>SIGNATURE BY THE COFFEE HOUSE - "DẤU ẤN" MỚI CỦA NHÀ CÀ PHÊ</h1>
             <p>16/08/2023</p>
             <p>
@@ -39,22 +39,22 @@ function ChuyenNha() {
             </p>
           </div>
         </div>
-      </div> {/* Đóng thẻ container */}
+      </div> {/* Đóng thẻ news-container */}
 
       {/* Thẻ chứa tiêu đề Coffeeholic */}
-      <div className="container2">
-        <div className="line"></div>
-        <div className="title">
+      <div className="coffeeholic-container">
+        <div className="coffeeholic-line"></div>
+        <div className="coffeeholic-title">
           <h3>Coffeeholic</h3>
         </div>
       </div>
 
       {/* Card với hình ảnh và thông tin về Coffeeholic */}
-      <div className="cmm">
-        <div className="img">
+      <div className="coffeeholic-card">
+        <div className="coffeeholic-image">
           <img src="https://file.hstatic.net/1000075078/article/thecoffeehouse_caphehighlight01_de40c0102a954c50a328f7befcdd82bd_master.jpg" alt="Coffeeholic" />
         </div>
-        <div className="content2">
+        <div className="coffeeholic-text">
           <h3>BẮT GẶP SÀI GÒN XƯA TRONG MÓN UỐNG HIỆN ĐẠI CỦA GIỚI TRẺ</h3>
           <p>11/01/2023</p>
           <p>
@@ -63,11 +63,11 @@ function ChuyenNha() {
         </div>
       </div>
 
-      <div className="cmm1">
-        <div className="img">
+      <div className="coffeeholic-card">
+        <div className="coffeeholic-image">
           <img src="https://file.hstatic.net/1000075078/article/1200x630_0b0081d93ba6479b934e04e71cbfd102_master.jpg" alt="Coffeeholic" />
         </div>
-        <div className="content2">
+        <div className="coffeeholic-text">
           <h3>CHỈ CHỌN CÀ PHÊ MỖI SÁNG NHƯNG CŨNG KHIẾN CUỘC SỐNG CỦA BẠN THÊM THÚ VỊ, TẠI SAO KHÔNG?</h3>
           <p>30/10/2023</p>
           <p>
@@ -76,11 +76,11 @@ function ChuyenNha() {
         </div>
       </div>
 
-      <div className="cmm2">
-        <div className="img">
+      <div className="coffeeholic-card">
+        <div className="coffeeholic-image">
           <img src="https://file.hstatic.net/1000075078/article/3__1__2b67342f4db64bb082944cf078afd910_master.jpg" alt="Coffeeholic" />
         </div>
-        <div className="content2">
+        <div className="coffeeholic-text">
           <h3>SIGNATURE - BIỂU TƯỢNG VĂN HOÁ CÀ PHÊ CỦA THE COFFEE HOUSE ĐÃ QUAY TRỞ LẠI</h3>
           <p>12/12/2023</p>
           <p>
@@ -90,19 +90,19 @@ function ChuyenNha() {
       </div>
 
       {/* Thẻ chứa tiêu đề Teaholic */}
-      <div className="container2">
-        <div className="line"></div>
-        <div className="title">
+      <div className="teaholic-container">
+        <div className="teaholic-line"></div>
+        <div className="teaholic-title">
           <h3>Teaholic</h3>
         </div>
       </div>
 
-      <div className="hello">
-        <div className="cmmv">
-          <div className="img">
+      <div className="teaholic-cards">
+        <div className="teaholic-card">
+          <div className="teaholic-image">
             <img src="https://file.hstatic.net/1000075078/article/an_banh_uong_nuoc_nhom_03_d499c0cab14746588fff6fe0dee678ad_master.jpg" alt="Teaholic" />
           </div>
-          <div className="content2">
+          <div className="teaholic-text">
             <h3>TRUNG THU NÀY, SAO BẠN KHÔNG TỰ CHO MÌNH "DỪNG MỘT CHÚT THÔI, THƯỞNG MỘT CHÚT TRÔI"?</h3>
             <p>21/01/2023</p>
             <p>
@@ -111,26 +111,30 @@ function ChuyenNha() {
           </div>
         </div>
 
-        <div className="img">
-          <img src="https://file.hstatic.net/1000075078/article/cautoankeothom_thecoffeehouse_03_29cd435c9a574e1a867ac36f2c863bb6_master.jpg" alt="Teaholic" />
-        </div>
-        <div className="content2">
-          <h3>“KHUẤY ĐỂ THẤY TRĂNG" - KHUẤY LÊN NIỀM HẠNH PHÚC: TRẢI NGHIỆM KHÔNG THỂ BỎ LỠ MÙA TRUNG THU NÀY</h3>
-          <p>30/10/2023</p>
-          <p>
-            Năm 2022 là năm đề cao sức khỏe tinh thần nên giới trẻ muốn tận hưởng một Trung thu với nhiều trải nghiệm mới mẻ, rôm rả cùng bạn bè và người thân. Và trải nghiệm độc đáo...
-          </p>
+        <div className="teaholic-card">
+          <div className="teaholic-image">
+            <img src="https://file.hstatic.net/1000075078/article/cautoankeothom_thecoffeehouse_03_29cd435c9a574e1a867ac36f2c863bb6_master.jpg" alt="Teaholic" />
+          </div>
+          <div className="teaholic-text">
+            <h3>“KHUẤY ĐỂ THẤY TRĂNG" - KHUẤY LÊN NIỀM HẠNH PHÚC: TRẢI NGHIỆM KHÔNG THỂ BỎ LỠ MÙA TRUNG THU NÀY</h3>
+            <p>30/10/2023</p>
+            <p>
+              Năm 2022 là năm đề cao sức khỏe tinh thần nên giới trẻ muốn tận hưởng một Trung thu với nhiều trải nghiệm mới mẻ, rôm rả cùng bạn bè và người thân. Và trải nghiệm độc đáo...
+            </p>
+          </div>
         </div>
 
-        <div className="img">
-          <img src="https://file.hstatic.net/1000075078/article/dscf0216_2890bcca44ae49aaaf843d5fa3db2fc6_master.jpg" alt="Teaholic" />
-        </div>
-        <div className="content2">
-          <h3>BỘ SƯU TẬP CẦU TOÀN KÈO THƠM: "VÍA" MAY MẮN KHÔNG THỂ BỎ LỠ TẾT NÀY</h3>
-          <p>15/08/2023</p>
-          <p>
-            Để chào đón mùa Tết Trung Thu năm 2023, nhà THE COFFEE HOUSE đã chuẩn bị một món quà vô cùng đặc biệt với giá trị yêu thương...
-          </p>
+        <div className="teaholic-card">
+          <div className="teaholic-image">
+            <img src="https://file.hstatic.net/1000075078/article/dscf0216_2890bcca44ae49aaaf843d5fa3db2fc6_master.jpg" alt="Teaholic" />
+          </div>
+          <div className="teaholic-text">
+            <h3>BỘ SƯU TẬP CẦU TOÀN KÈO THƠM: "VÍA" MAY MẮN KHÔNG THỂ BỎ LỠ TẾT NÀY</h3>
+            <p>15/08/2023</p>
+            <p>
+              Để chào đón mùa Tết Trung Thu năm 2023, nhà THE COFFEE HOUSE đã chuẩn bị một món quà vô cùng đặc biệt với giá trị yêu thương...
+            </p>
+          </div>
         </div>
       </div>
     </div>

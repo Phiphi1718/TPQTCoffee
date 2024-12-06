@@ -1,5 +1,5 @@
 /* Container tổng */
-.container {
+.chuyen-nha-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
@@ -9,25 +9,25 @@
 }
 
 /* Chuyện Nhà */
-.story-container {
+.chuyen-nha-story-container {
     text-align: center;
     font-family: 'Arial', sans-serif;
 }
 
-.story-title {
+.chuyen-nha-story-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.story-underline {
+.chuyen-nha-story-underline {
     width: 50px;
     height: 3px;
     background-color: orange;
     margin: 0 auto 15px;
 }
 
-.story-text {
+.chuyen-nha-story-text {
     font-size: 13px;
     line-height: 1.6;
     color: #333;
@@ -36,7 +36,7 @@
 }
 
 /* Card */
-.card {
+.chuyen-nha-card {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -44,54 +44,54 @@
     flex-direction: column;
 }
 
-.card img {
+.chuyen-nha-card img {
     width: 100%;
     object-fit: cover;
     height: auto;
 }
 
-.content {
+.chuyen-nha-content {
     padding: 15px;
 }
 
-.content h1 {
+.chuyen-nha-content h1 {
     font-size: 18px;
     margin-bottom: 10px;
     color: #333;
 }
 
-.content p {
+.chuyen-nha-content p {
     font-size: 14px;
     color: #666;
     margin: 5px 0;
 }
 
-.content p:first-of-type {
+.chuyen-nha-content p:first-of-type {
     font-weight: bold;
     color: #999;
 }
 
 /* Tiêu đề Coffeeholic, Teaholic */
-.container2 {
+.chuyen-nha-container2 {
     display: flex;
     gap: 10px;
     margin-top: 40px;
 }
 
-.line {
+.chuyen-nha-line {
     width: 3px;
     height: 50px;
     background-color: orange;
 }
 
-.title h3 {
+.chuyen-nha-title h3 {
     font-size: 20px;
     font-weight: bold;
     color: #333;
 }
 
 /* Các bài viết */
-.cmm, .cmm1, .cmm2 {
+.chuyen-nha-cmm, .chuyen-nha-cmm1, .chuyen-nha-cmm2 {
     display: flex;
     gap: 20px;
     background-color: #FFF7E6;
@@ -100,51 +100,51 @@
     border-radius: 10px;
 }
 
-.cmm .content2, .cmm1 .content2, .cmm2 .content2 {
+.chuyen-nha-cmm .chuyen-nha-content2, .chuyen-nha-cmm1 .chuyen-nha-content2, .chuyen-nha-cmm2 .chuyen-nha-content2 {
     padding: 15px;
 }
 
-.cmm .content2 h1, .cmm1 .content2 h1, .cmm2 .content2 h1 {
+.chuyen-nha-cmm .chuyen-nha-content2 h1, .chuyen-nha-cmm1 .chuyen-nha-content2 h1, .chuyen-nha-cmm2 .chuyen-nha-content2 h1 {
     font-size: 18px;
     margin-bottom: 10px;
     color: #333;
 }
 
-.cmm .content2 p, .cmm1 .content2 p, .cmm2 .content2 p {
+.chuyen-nha-cmm .chuyen-nha-content2 p, .chuyen-nha-cmm1 .chuyen-nha-content2 p, .chuyen-nha-cmm2 .chuyen-nha-content2 p {
     font-size: 14px;
     color: #666;
     margin: 5px 0;
 }
 
-.cmm .content2 p:first-of-type, .cmm1 .content2 p:first-of-type, .cmm2 .content2 p:first-of-type {
+.chuyen-nha-cmm .chuyen-nha-content2 p:first-of-type, .chuyen-nha-cmm1 .chuyen-nha-content2 p:first-of-type, .chuyen-nha-cmm2 .chuyen-nha-content2 p:first-of-type {
     font-weight: bold;
     color: #999;
 }
 
-.img {
+.chuyen-nha-img {
     width: 33.33%;
     border-radius: 20px;
     overflow: hidden;
 }
 
-.img img {
+.chuyen-nha-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* Phần đặc biệt */
-.hello {
+.chuyen-nha-hello {
     display: flex;
     gap: 20px;
     margin-top: 40px;
 }
 
-.cmmv {
+.chuyen-nha-cmmv {
     width: 70%;
 }
 
-.haha img {
+.chuyen-nha-haha img {
     height: 1100px;
     width: 550px;
     object-fit: cover;
