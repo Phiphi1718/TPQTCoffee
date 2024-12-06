@@ -2,13 +2,14 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
+import './Layout.css'
 
 const Layout = () => {
   return (
-    <div>
+    <div className="app-container"> {/* Thêm class app-container */}
       <Header />
-      <main>
-        <Outlet /> {/* Đây là nơi các route con sẽ được render */}
+      <main className="main-content">
+        <Outlet /> {/* Nội dung của trang */}
       </main>
       <Footer />
     </div>

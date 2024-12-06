@@ -8,6 +8,8 @@ import ProductModal from './ProductModal'; // Import ProductModal
 const IceBlended = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null); // Sản phẩm được chọn để hiển thị modal
+  const [isLoading, setIsLoading] = useState(true); // Trạng thái loading
+  const [error, setError] = useState(null); // Trạng thái lỗi
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
@@ -24,9 +26,16 @@ const IceBlended = () => {
           setProducts(featuredProducts);
         } else {
           console.error('Invalid data format:', data);
+          setError('Dữ liệu không hợp lệ.');
         }
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+        setError('Không thể tải sản phẩm.');
+      })
+      .finally(() => {
+        setIsLoading(false); // Kết thúc trạng thái tải
+      });
   }, []);
 
   // Đóng modal
@@ -41,6 +50,14 @@ const IceBlended = () => {
         sảng khoái, đặc biệt phù hợp trong những ngày nắng nóng. Ice Blended được ưa chuộng bởi vị ngọt ngào, béo
         ngậy và cấu trúc đá xay mịn màng.
       </div>
+
+      {/* Hiển thị thông báo lỗi hoặc trạng thái tải */}
+      {(isLoading || error) && (
+        /* From Uiverse.io by 00Kubi */ 
+<div class="loader"></div>
+
+      )}
+
       <div className="product-grid">
         {products.map((product) => (
           <ProductCard

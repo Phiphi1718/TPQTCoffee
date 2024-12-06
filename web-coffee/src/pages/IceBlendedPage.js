@@ -9,11 +9,18 @@ import CartButton from '../components/CartButton'; // Import nút giỏ hàng
 const IceBlendedPage = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null); // Sản phẩm được chọn để hiển thị modal
+  const [isLoading, setIsLoading] = useState(true); // Trạng thái đang tải
+  const [error, setError] = useState(null); // Trạng thái lỗi
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
     fetch('https://localhost:7095/api/Product/getall')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Không thể tải dữ liệu'); // Nếu fetch thất bại, throw lỗi
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data?.$values) {
           // Lọc sản phẩm theo danh mục "Ice Blended"
@@ -22,10 +29,15 @@ const IceBlendedPage = () => {
           );
           setProducts(iceBlendedProducts);
         } else {
-          console.error('Invalid data format:', data);
+          console.error('Dữ liệu không hợp lệ:', data);
         }
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => {
+        setError(error.message); // Lưu thông báo lỗi vào state
+      })
+      .finally(() => {
+        setIsLoading(false); // Kết thúc quá trình tải dữ liệu
+      });
   }, []);
 
   const handleProductClick = (product) => {
@@ -38,28 +50,44 @@ const IceBlendedPage = () => {
 
   return (
     <div className="ice-blended-page-container">
+      {/* Tiêu đề luôn hiển thị trên đầu */}
       <div className="ice-blended-section-title">Ice Blended</div>
-      <div className="ice-blended-section-subtitle">
-        Ice Blended là sự kết hợp hoàn hảo giữa đá xay và hương vị đa dạng, mang đến trải nghiệm tươi mát, sảng khoái.
-      </div>
-      <div className="ice-blended-product-grid">
-        {products.map((product) => (
-          <IceBlendedProductCard
-            key={product.id}
-            product={product}
-            onBuy={() => handleProductClick(product)}
-          />
-        ))}
-      </div>
 
-      {/* Hiển thị modal chi tiết sản phẩm */}
-      {selectedProduct && (
-        <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+      {/* Hiển thị thông báo khi đang tải hoặc có lỗi */}
+      {isLoading || error ? (
+        <div className="🤚">  
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="🌴"></div>		
+        <div className="👍"></div>
+      </div>
+      ) : (
+        <>
+          <div className="ice-blended-section-subtitle">
+            Ice Blended là sự kết hợp hoàn hảo giữa đá xay và hương vị đa dạng, mang đến trải nghiệm tươi mát, sảng khoái.
+          </div>
+          <div className="ice-blended-product-grid">
+            {products.map((product) => (
+              <IceBlendedProductCard
+                key={product.id}
+                product={product}
+                onBuy={() => handleProductClick(product)}
+              />
+            ))}
+          </div>
+
+          {/* Hiển thị modal chi tiết sản phẩm */}
+          {selectedProduct && (
+            <ProductModal product={selectedProduct} onClose={handleCloseModal} />
+          )}
+
+          {/* Hiển thị nút giỏ hàng và hotline */}
+          <CartButton />
+          <FloatingButton />
+        </>
       )}
-
-      {/* Hiển thị nút giỏ hàng và hotline */}
-      <CartButton />
-      <FloatingButton />
     </div>
   );
 };

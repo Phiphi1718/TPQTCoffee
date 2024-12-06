@@ -9,6 +9,8 @@ const FeaturedProducts = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Trạng thái loading
+  const [error, setError] = useState(null); // Trạng thái lỗi
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
@@ -22,9 +24,16 @@ const FeaturedProducts = () => {
           setProducts(featuredProducts);
         } else {
           console.error("Invalid data format:", data);
+          setError('Dữ liệu không hợp lệ.');
         }
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+        setError('Không thể tải sản phẩm.');
+      })
+      .finally(() => {
+        setIsLoading(false); // Kết thúc trạng thái tải
+      });
   }, []);
 
   // Hàm xử lý khi nhấn nút "Đặt mua"
@@ -40,15 +49,22 @@ const FeaturedProducts = () => {
   };
 
   return (
-    
     <div className="TraNoiBat">
-       <div className="search-home">
+      <div className="search-home">
         <SearchBar />
       </div>
       <div className="section-Tra">TRÀ NỔI BẬT</div>
       <div className="section-subtitle">
         Trải qua hơn 50 năm chắt chiu tinh hoa từ những búp trà xanh và hạt cà phê thượng hạng cùng mong muốn mang lại cho khách hàng những trải nghiệm giá trị nhất khi thưởng thức.
       </div>
+
+      {/* Hiển thị thông báo lỗi hoặc trạng thái tải */}
+      {(isLoading || error) && (
+       /* From Uiverse.io by 00Kubi */ 
+<div class="loader"></div>
+
+      )}
+
       <div className="product-grid">
         {products.map((product) => (
           <ProductCard 

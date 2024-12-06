@@ -9,11 +9,18 @@ import CartButton from '../components/CartButton'; // Import CartButton
 const TeaPage = () => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null); // Quản lý sản phẩm được chọn để hiển thị modal
+  const [isLoading, setIsLoading] = useState(true); // Trạng thái đang tải
+  const [error, setError] = useState(null); // Trạng thái lỗi
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
     fetch('https://localhost:7095/api/Product/getall')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Không thể tải dữ liệu');
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data?.$values) {
           // Lọc chỉ lấy sản phẩm thuộc danh mục "Trà"
@@ -22,10 +29,15 @@ const TeaPage = () => {
           );
           setProducts(teaProducts);
         } else {
-          console.error('Invalid data format:', data);
+          console.error('Dữ liệu không hợp lệ:', data);
         }
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => {
+        setError(error.message); // Lưu thông báo lỗi vào state
+      })
+      .finally(() => {
+        setIsLoading(false); // Kết thúc quá trình tải dữ liệu
+      });
   }, []);
 
   const handleProductClick = (product) => {
@@ -36,9 +48,23 @@ const TeaPage = () => {
     setSelectedProduct(null); // Đóng modal khi không cần thiết
   };
 
+
+
   return (
     <div className="tea-page-container">
       <div className="tea-section-title">Trà</div>
+       {/* Hiển thị thông báo khi đang tải hoặc có lỗi */}
+       {isLoading || error ? (
+        <div className="🤚">  
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="🌴"></div>		
+        <div className="👍"></div>
+      </div>
+      ) : (
+        <>
       <div className="tea-section-subtitle">
         Trà là một trong những thức uống thanh tao, được yêu thích ở nhiều nền văn hóa. Từ trà đen, trà xanh đến các loại trà sữa hiện đại, mỗi loại trà mang một hương vị riêng biệt.
       </div>
@@ -60,6 +86,8 @@ const TeaPage = () => {
       {/* Hiển thị nút giỏ hàng và hotline ở cuối trang */}
       <CartButton />
       <FloatingButton />
+      </>
+      )}
     </div>
   );
 };

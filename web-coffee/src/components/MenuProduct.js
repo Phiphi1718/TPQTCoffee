@@ -13,17 +13,20 @@ const MenuProduct = () => {
     cake: [],
     iceBlended: []
   });
-  const [loading, setLoading] = useState(true); // Trạng thái loading
-  const [error, setError] = useState(null); // Lỗi nếu có
-  const [selectedProduct, setSelectedProduct] = useState(null); // Lưu sản phẩm được chọn để hiển thị modal
+  const [loading, setLoading] = useState(true); 
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Hàm gọi API để lấy sản phẩm
   const fetchProducts = () => {
+    setLoading(true); 
     fetch('https://localhost:7095/api/Product/getall')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data?.$values) {
-          // Phân loại sản phẩm theo từng loại dựa trên categoryName
           const categorizedProducts = {
             coffee: [],
             tea: [],
@@ -32,7 +35,6 @@ const MenuProduct = () => {
             iceBlended: []
           };
 
-          // Phân loại từng sản phẩm vào các nhóm tương ứng
           data.$values.forEach((product) => {
             switch (product.categoryName?.toLowerCase()) {
               case 'coffee':
@@ -55,169 +57,177 @@ const MenuProduct = () => {
             }
           });
 
-          setProducts(categorizedProducts); // Lưu lại sản phẩm đã phân loại
-          setLoading(false); // Đặt trạng thái loading là false khi có dữ liệu
-        } else {
-          throw new Error("No products data");
+          setProducts(categorizedProducts);
         }
+        setLoading(false); 
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
-        setError(error.message); // Ghi nhận lỗi
-        setLoading(false); // Đặt trạng thái loading là false khi có lỗi
+        setLoading(false); 
       });
   };
 
-  // Gọi API khi component mount và thiết lập interval
   useEffect(() => {
-    fetchProducts(); // Gọi API ngay khi component load lần đầu
-    const intervalId = setInterval(fetchProducts, 30000); // Gọi lại API mỗi 30 giây (30000ms)
+    fetchProducts(); 
+    const intervalId = setInterval(fetchProducts, 30000); 
 
-    // Dọn dẹp interval khi component bị unmount
     return () => clearInterval(intervalId);
   }, []);
 
-  if (loading) {
-    return <div>Đang tải dữ liệu...</div>; // Hiển thị trạng thái loading
-  }
-
-  if (error) {
-    return <div>Lỗi: {error}</div>; // Hiển thị lỗi nếu có
+   // Điều kiện hiển thị "bàn tay"
+   if (loading || Object.values(products).every((category) => category.length === 0)) {
+    return (
+      <div className="🤚">
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="🌴"></div>		
+        <div className="👍"></div>
+      </div>
+    );
   }
 
   return (
     <div className="all-products-page1">
       <h1>Tất cả sản phẩm</h1>
 
-      {/* Khung Coffee */}
-      <div className="product-category1">
-        <h2>Cà phê</h2>
-        <div className="product-list1">
-          {products.coffee.map((product) => (
-            <div key={product.id} className="product-item1">
-              <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
-                <div className="noidung">
-                <h3>{product.name}</h3>
-                <p>{product.price.toLocaleString()} đ</p>
-                </div> 
-              </Link>
-              <button
-                className="btn-buy"
-                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
-              >
-                Đặt mua
-              </button>
-            </div>
-          ))}
+      {/* Hiển thị từng danh mục nếu có sản phẩm */}
+      {products.coffee.length > 0 && (
+        <div className="product-category1">
+          <h2>Cà phê</h2>
+          <div className="product-list1">
+            {products.coffee.map((product) => (
+              <div key={product.id} className="product-item1">
+                <Link to={`/product/${product.id}`}>
+                  <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                  <div className="noidung">
+                    <h3>{product.name}</h3>
+                    <p>{product.price.toLocaleString()} đ</p>
+                  </div> 
+                </Link>
+                <button
+                  className="btn-buy"
+                  onClick={() => setSelectedProduct(product)} 
+                >
+                  Đặt mua
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Khung Trà */}
-      <div className="product-category1">
-        <h2>Trà</h2>
-        <div className="product-list1">
-          {products.tea.map((product) => (
-            <div key={product.id} className="product-item1">
-              <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
-                <div className="noidung">
-                <h3>{product.name}</h3>
-                <p>{product.price.toLocaleString()} đ</p>
-                </div> 
-              </Link>
-              <button
-                className="btn-buy"
-                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
-              >
-                Đặt mua
-              </button>
-            </div>
-          ))}
+      {products.tea.length > 0 && (
+        <div className="product-category1">
+          <h2>Trà</h2>
+          <div className="product-list1">
+            {products.tea.map((product) => (
+              <div key={product.id} className="product-item1">
+                <Link to={`/product/${product.id}`}>
+                  <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                  <div className="noidung">
+                    <h3>{product.name}</h3>
+                    <p>{product.price.toLocaleString()} đ</p>
+                  </div> 
+                </Link>
+                <button
+                  className="btn-buy"
+                  onClick={() => setSelectedProduct(product)} 
+                >
+                  Đặt mua
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Khung Trà sữa */}
-      <div className="product-category1">
-        <h2>Trà sữa</h2>
-        <div className="product-list1">
-          {products.milkTea.map((product) => (
-            <div key={product.id} className="product-item1">
-              <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
-                <div className="noidung">
-                <h3>{product.name}</h3>
-                <p>{product.price.toLocaleString()} đ</p>
-                </div> 
-              </Link>
-              <button
-                className="btn-buy"
-                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
-              >
-                Đặt mua
-              </button>
-            </div>
-          ))}
+      {/* Lặp lại tương tự cho các danh mục khác */}
+      {products.milkTea.length > 0 && (
+        <div className="product-category1">
+          <h2>Trà sữa</h2>
+          <div className="product-list1">
+            {products.milkTea.map((product) => (
+              <div key={product.id} className="product-item1">
+                <Link to={`/product/${product.id}`}>
+                  <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                  <div className="noidung">
+                    <h3>{product.name}</h3>
+                    <p>{product.price.toLocaleString()} đ</p>
+                  </div> 
+                </Link>
+                <button
+                  className="btn-buy"
+                  onClick={() => setSelectedProduct(product)} 
+                >
+                  Đặt mua
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Khung Bánh */}
-      <div className="product-category1">
-        <h2>Bánh</h2>
-        <div className="product-list1">
-          {products.cake.map((product) => (
-            <div key={product.id} className="product-item1">
-              <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
-                <div className="noidung">
-                <h3>{product.name}</h3>
-                <p>{product.price.toLocaleString()} đ</p>
-                </div> 
-              </Link>
-              <button
-                className="btn-buy"
-                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
-              >
-                Đặt mua
-              </button>
-            </div>
-          ))}
+      {products.cake.length > 0 && (
+        <div className="product-category1">
+          <h2>Bánh</h2>
+          <div className="product-list1">
+            {products.cake.map((product) => (
+              <div key={product.id} className="product-item1">
+                <Link to={`/product/${product.id}`}>
+                  <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                  <div className="noidung">
+                    <h3>{product.name}</h3>
+                    <p>{product.price.toLocaleString()} đ</p>
+                  </div> 
+                </Link>
+                <button
+                  className="btn-buy"
+                  onClick={() => setSelectedProduct(product)} 
+                >
+                  Đặt mua
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Khung Ice Blended */}
-      <div className="product-category1">
-        <h2>Ice Blended</h2>
-        <div className="product-list1">
-          {products.iceBlended.map((product) => (
-            <div key={product.id} className="product-item1">
-              <Link to={`/product/${product.id}`}>
-                <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
-                <div className="noidung">
-                <h3>{product.name}</h3>
-                <p>{product.price.toLocaleString()} đ</p>
-                </div> 
-              </Link>
-              <button
-                className="btn-buy"
-                onClick={() => setSelectedProduct(product)} // Mở modal khi nhấn
-              >
-                Đặt mua
-              </button>
-            </div>
-          ))}
+      {products.iceBlended.length > 0 && (
+        <div className="product-category1">
+          <h2>Ice Blended</h2>
+          <div className="product-list1">
+            {products.iceBlended.map((product) => (
+              <div key={product.id} className="product-item1">
+                <Link to={`/product/${product.id}`}>
+                  <img src={`https://localhost:7095/${product.imageUrl}`} alt={product.name} />
+                  <div className="noidung">
+                    <h3>{product.name}</h3>
+                    <p>{product.price.toLocaleString()} đ</p>
+                  </div> 
+                </Link>
+                <button
+                  className="btn-buy"
+                  onClick={() => setSelectedProduct(product)} 
+                >
+                  Đặt mua
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Hiển thị Modal */}
+      {/* Modal */}
       {selectedProduct && (
         <ProductModal
-          product={selectedProduct} // Truyền thông tin sản phẩm vào modal
-          onClose={() => setSelectedProduct(null)} // Đóng modal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
         />
       )}
-            <CartButton />   {/* Nút CartButton */}
-      <FloatingButton /> {/* Nút FloatingButton */}
+      <CartButton />   
+      <FloatingButton /> 
     </div>
   );
 };

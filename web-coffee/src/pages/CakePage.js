@@ -8,13 +8,20 @@ import CartButton from '../components/CartButton';
 
 const CakePage = () => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Trạng thái tải dữ liệu
   const [selectedProduct, setSelectedProduct] = useState(null); // Quản lý sản phẩm được chọn để hiển thị modal
+  const [error, setError] = useState(null); // Trạng thái lỗi
   const { addToCart } = useCart(); // Dùng context để thêm vào giỏ hàng
 
   useEffect(() => {
     // Gọi API để lấy danh sách sản phẩm
     fetch('https://localhost:7095/api/Product/getall')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
         if (data?.$values) {
           // Lọc chỉ lấy sản phẩm thuộc danh mục "Bánh"
@@ -26,7 +33,11 @@ const CakePage = () => {
           console.error('Invalid data format:', data);
         }
       })
-      .catch((error) => console.error('Error fetching products:', error));
+      .catch((error) => {
+        setError('Không thể tải dữ liệu'); // Lưu thông báo lỗi vào state
+        console.error('Error fetching products:', error);
+      })
+      .finally(() => setIsLoading(false)); // Kết thúc tải dữ liệu
   }, []);
 
   const handleProductClick = (product) => {
@@ -61,32 +72,48 @@ const CakePage = () => {
 
   return (
     <div className="cake-page-container">
+      {/* Tiêu đề luôn hiển thị trên đầu */}
       <div className="cake-section-title">Bánh</div>
-      <div className="cake-section-subtitle">
-        Bánh là sự hòa quyện của hương vị ngọt ngào và nghệ thuật ẩm thực. Từ bánh ngọt, bánh kem cho đến bánh mì, mỗi loại đều mang một sự đặc biệt riêng.
-      </div>
-      <div className="cake-product-grid">
-        {products.map((product) => (
-          <CakeProductCard
-            key={product.id}
-            product={product}
-            onBuy={() => handleProductClick(product)} // Gọi hàm khi user ấn "Đặt mua"
-          />
-        ))}
-      </div>
 
-      {/* Hiển thị modal khi có sản phẩm được chọn */}
-      {selectedProduct && (
-        <ProductModalCake
-          product={selectedProduct}
-          onClose={handleCloseModal}
-          onAddToCart={handleAddToCart}
-        />
+      {/* Hiển thị thông báo khi đang tải hoặc có lỗi */}
+      {isLoading || error ? (
+        <div className="🤚">  
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="👉"></div>
+        <div className="🌴"></div>		
+        <div className="👍"></div>
+      </div>
+      ) : (
+        <>
+          <div className="cake-section-subtitle">
+            Bánh là sự hòa quyện của hương vị ngọt ngào và nghệ thuật ẩm thực. Từ bánh ngọt, bánh kem cho đến bánh mì, mỗi loại đều mang một sự đặc biệt riêng.
+          </div>
+          <div className="cake-product-grid">
+            {products.map((product) => (
+              <CakeProductCard
+                key={product.id}
+                product={product}
+                onBuy={() => handleProductClick(product)} // Gọi hàm khi user ấn "Đặt mua"
+              />
+            ))}
+          </div>
+
+          {/* Hiển thị modal khi có sản phẩm được chọn */}
+          {selectedProduct && (
+            <ProductModalCake
+              product={selectedProduct}
+              onClose={handleCloseModal}
+              onAddToCart={handleAddToCart}
+            />
+          )}
+
+          {/* Hiển thị nút giỏ hàng và hotline ở cuối trang */}
+          <CartButton />
+          <FloatingButton />
+        </>
       )}
-
-      {/* Hiển thị nút giỏ hàng và hotline ở cuối trang */}
-      <CartButton />
-      <FloatingButton />
     </div>
   );
 };

@@ -92,12 +92,12 @@ const ReviewForm = () => {
               alt={product.name}
             />
             <h4>{product.name}</h4>
-            <p>{product.price} VND</p>
+            <p className="price12">{product.price} VND</p>
             <p>{product.description}</p>
 
             <div>
               <label>
-                Đánh giá:
+               <div className="DanhGia" >Đánh giá</div>
                 <div className="star-rating">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <span
