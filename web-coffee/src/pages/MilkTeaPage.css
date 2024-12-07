@@ -29,10 +29,12 @@
 /* Grid chứa các sản phẩm trà */
 .milk-tea-product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Luôn giữ 3 khung mỗi hàng */
+  grid-template-columns: repeat(3, 1fr); /* Luôn hiển thị 3 khung mỗi hàng */
   gap: 30px;
   justify-items: center;
   align-items: stretch; /* Căn chỉnh tất cả các khung đều chiều cao */
+  max-width: 917px;
+  margin: 0 auto; /* Căn giữa theo chiều ngang */
 }
 
 /* Thẻ sản phẩm trà */
