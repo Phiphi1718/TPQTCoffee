@@ -8,7 +8,7 @@ function ChuyenNha() {
         <h2 className="chuyen-nha-title">Chuyện Nhà</h2>
         <div className="chuyen-nha-underline"></div>
         <p className="chuyen-nha-text">
-          The Coffee House sẽ là nơi mọi người xích lại gần nhau, đề cao giá trị kết nối con người và sẻ chia thân tình bên những tách cà phê, ly trà đượm hương, truyền cảm hứng về lối sống hiện đại.
+          TPQT Coffee sẽ là nơi mọi người xích lại gần nhau, đề cao giá trị kết nối con người và sẻ chia thân tình bên những tách cà phê, ly trà đượm hương, truyền cảm hứng về lối sống hiện đại.
         </p>
       </div>
 
@@ -31,7 +31,7 @@ function ChuyenNha() {
         <div className="news-card">
           <img src="https://file.hstatic.net/1000075078/article/signaturebythecoffeehouse_03_16b2ab7101e14d62835a4b231e73b65d_master.jpg" alt="Coffee House" />
           <div className="news-content">
-            <h1>SIGNATURE BY THE COFFEE HOUSE - "DẤU ẤN" MỚI CỦA NHÀ CÀ PHÊ</h1>
+            <h1>TPQT Coffee - "DẤU ẤN" MỚI CỦA NHÀ CÀ PHÊ</h1>
             <p>16/08/2023</p>
             <p>
               Một không gian hiện đại, hòa quyện giữa thiên nhiên và nét tối giản,
@@ -81,7 +81,7 @@ function ChuyenNha() {
           <img src="https://file.hstatic.net/1000075078/article/3__1__2b67342f4db64bb082944cf078afd910_master.jpg" alt="Coffeeholic" />
         </div>
         <div className="coffeeholic-text">
-          <h3>SIGNATURE - BIỂU TƯỢNG VĂN HOÁ CÀ PHÊ CỦA THE COFFEE HOUSE ĐÃ QUAY TRỞ LẠI</h3>
+          <h3>SIGNATURE - BIỂU TƯỢNG VĂN HOÁ CÀ PHÊ CỦA TPQT Coffee ĐÃ QUAY TRỞ LẠI</h3>
           <p>12/12/2023</p>
           <p>
             Mới đây, các "tín đồ" cà phê đang bàn tán xôn xao về SIGNATURE - Biểu ....
@@ -96,8 +96,8 @@ function ChuyenNha() {
           <h3>Teaholic</h3>
         </div>
       </div>
-
-      <div className="teaholic-cards">
+      
+        <div className="teaholic-cards">
         <div className="teaholic-card">
           <div className="teaholic-image">
             <img src="https://file.hstatic.net/1000075078/article/an_banh_uong_nuoc_nhom_03_d499c0cab14746588fff6fe0dee678ad_master.jpg" alt="Teaholic" />
@@ -110,6 +110,7 @@ function ChuyenNha() {
             </p>
           </div>
         </div>
+        
 
         <div className="teaholic-card">
           <div className="teaholic-image">
@@ -132,12 +133,13 @@ function ChuyenNha() {
             <h3>BỘ SƯU TẬP CẦU TOÀN KÈO THƠM: "VÍA" MAY MẮN KHÔNG THỂ BỎ LỠ TẾT NÀY</h3>
             <p>15/08/2023</p>
             <p>
-              Để chào đón mùa Tết Trung Thu năm 2023, nhà THE COFFEE HOUSE đã chuẩn bị một món quà vô cùng đặc biệt với giá trị yêu thương...
+              Để chào đón mùa Tết Trung Thu năm 2023, nhà TPQT Coffee đã chuẩn bị một món quà vô cùng đặc biệt với giá trị yêu thương...
             </p>
           </div>
         </div>
+          </div>    
       </div>
-    </div>
+    
   );
 }
 
